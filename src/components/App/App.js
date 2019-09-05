@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { getAlbums } from '../../apiCalls/apiCalls.js'
-import './App.css';
+import React, { Component } from "react";
+import { getAlbums } from "../../apiCalls/apiCalls.js";
+import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
+import "./App.css";
 
 class App extends Component {
   constructor() {
-    super() 
+    super();
     this.state = {
       albums: [],
-      error: ''
-    }
+      error: ""
+    };
   }
-  async componentDidMount () {
+  async componentDidMount() {
     try {
       const albums = await getAlbums();
-      this.setState({ albums })
-    } catch({ message }) {
-      this.setState({ error: message})
+      this.setState({ albums });
+    } catch ({ message }) {
+      this.setState({ error: message });
     }
   }
 
@@ -24,12 +25,13 @@ class App extends Component {
     // console.log('art', this.state.albums.results)
     return (
       <div>
-        hey
+        {this.state.error && <p>{this.state.error}</p>}
+        <FavoritesContainer albums={this.state.albums} />
         {/* {this.state.albums.length && <p>hey</p>}
         {this.state.albums.length && <img src={this.state.albums[0].artworkUrl60} alt=''/>} */}
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
