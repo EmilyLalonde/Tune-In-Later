@@ -7,7 +7,7 @@ const Album = ({ albumData }) => {
       <h2>{albumData.artistName}</h2>
       <p>{albumData.releaseDate.substring(0,4)}</p>
       <p>{albumData.collectionName}</p>
-      <img src={albumData.artworkUrl100} alt="" />
+      <img src={albumData.artworkUrl100} alt="" className="coverArt"/>
     </article>
   );
 };
