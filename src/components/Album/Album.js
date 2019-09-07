@@ -1,13 +1,15 @@
 import "./Album.css";
 import React from "react";
 
-const Album = ({ albumData }) => {
+const Album = ({ albumData, handleFavorite }) => {
+  // console.log('handlefav', handleFavorite)
   return (
     <article className='Album'>
       <h2>{albumData.artistName}</h2>
       <p>{albumData.releaseDate.substring(0,4)}</p>
       <p>{albumData.collectionName}</p>
       <img src={albumData.artworkUrl100} alt="" className="coverArt"/>
+      <button onClick={handleFavorite}>Save for later</button>
     </article>
   );
 };
