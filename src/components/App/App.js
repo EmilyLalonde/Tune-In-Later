@@ -17,7 +17,7 @@ class App extends Component {
       pop: [],
       error: "",
       currentUser: null,
-      redirect: true
+      favorites: [{artistName:'blah' , releaseDate: 'blah',  collectionName: 'blah', artworkUrl100: 'https://is2-ssl.mzstatic.com/image/thumb/Music/v4/98/b4/f8/98b4f834-1b2d-e5a9-fe3d-ce9ef8fa0114/source/100x100bb.jpg'}]
     };
   }
   async componentDidMount() {
@@ -53,9 +53,18 @@ class App extends Component {
     .catch(err => this.setState({error: err.message}))
   }
 
-  logoutUser =() => {
+  logoutUser = () => {
     this.setState({currentUser: null});
     console.log(this.state.currentUser)
+  }
+
+  handleFavorite = () => {
+    if(!this.state.currentUser) {
+      this.setState({error: 'You must sign in before favoriting'})
+    } else {
+      this.setState({error: ''})
+    }
+
   }
 
   render() {
@@ -66,15 +75,16 @@ class App extends Component {
         <Route exact path='/' render={() => 
           <div>
             <h2>Doo-Wop</h2>
-            <WelcomeContainer albums={this.state.country} />
+            <WelcomeContainer albums={this.state.country} handleFavorite={this.handleFavorite} />
             <h2>Hair Metal</h2>
-            <WelcomeContainer albums={this.state.pop} />
+            <WelcomeContainer albums={this.state.pop} handleFavorite={this.handleFavorite} />
             <h2>Gangsta Rap</h2>
-            <WelcomeContainer albums={this.state.rock} />
+            <WelcomeContainer albums={this.state.rock} handleFavorite={this.handleFavorite} />
           </div>
         }/>
         {this.state.currentUser ? <Redirect  to='/'/> : <Route exact path='/login' render={() => <LoginForm loginTheUser={this.loginTheUser}/>} />}
         <Route exact path='/create-user' render={() => <CreateUserForm createTheUser={this.createTheUser}/>} />
+        <Route exact path='/favorites' render={() => <FavoritesContainer favorites={this.state.favorites} handleFavorite={this.handleFavorite} />} /> 
       </div>
     );
   }
