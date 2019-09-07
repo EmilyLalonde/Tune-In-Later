@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {createUser} from '../../apiCalls/apiCalls'
 import "./CreateUserForm.css";
 
 class CreateUserForm extends Component {

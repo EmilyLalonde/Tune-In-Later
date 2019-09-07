@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getAlbums, createUser } from "../../apiCalls/apiCalls.js";
+import { getAlbums, createUser, loginUser } from "../../apiCalls/apiCalls.js";
 import { Route, NavLink } from 'react-router-dom';
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
@@ -43,7 +43,13 @@ class App extends Component {
   createTheUser = (user) => {
     createUser(user)
     .then(data => this.setState({currentUser: data}))
-    .catch(err => console.log(err))
+    .catch(err => this.setState({error: err.message}))
+  }
+
+  loginTheUser = (user) => {
+    loginUser(user)
+    .then(data => this.setState({currentUser: data}))
+    .catch(err => this.setState({error: err.message}))
   }
 
   render() {
@@ -61,7 +67,7 @@ class App extends Component {
             <WelcomeContainer albums={this.state.rock} />
           </div>
         } />
-        <Route exact path='/login' render={() => <LoginForm />} />
+        <Route exact path='/login' render={() => <LoginForm loginTheUser={this.loginTheUser}/>} />
         <Route exact path='/create-user' render={() => <CreateUserForm createTheUser={this.createTheUser}/>} />
       </div>
     );

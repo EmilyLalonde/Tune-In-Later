@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import './LoginForm.css';
-import { loginUser } from '../../apiCalls/apiCalls';
 
 class LoginForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       email: '',
       password: ''
@@ -24,7 +23,7 @@ class LoginForm extends Component {
       password: this.state.password
     }
 
-    loginUser(user)
+    this.props.loginTheUser(user)
   }
 
   render() {
