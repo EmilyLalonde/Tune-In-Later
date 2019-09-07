@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getAlbums, createUser, loginUser } from "../../apiCalls/apiCalls.js";
+import { getAlbums, createUser, loginUser, addToFavorites, getFavorites } from "../../apiCalls/apiCalls.js";
 import { Route, NavLink, Redirect } from 'react-router-dom';
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
@@ -17,7 +17,8 @@ class App extends Component {
       pop: [],
       error: "",
       currentUser: null,
-      favorites: [{artistName:'blah' , releaseDate: 'blah',  collectionName: 'blah', artworkUrl100: 'https://is2-ssl.mzstatic.com/image/thumb/Music/v4/98/b4/f8/98b4f834-1b2d-e5a9-fe3d-ce9ef8fa0114/source/100x100bb.jpg'}]
+      favorites: [],
+      isFavorited: false
     };
   }
   async componentDidMount() {
@@ -50,6 +51,7 @@ class App extends Component {
   loginTheUser = (user) => {
     loginUser(user)
     .then(data => this.setState({currentUser: data}))
+    .then(() => getFavorites(this.state.currentUser))
     .catch(err => this.setState({error: err.message}))
   }
 
@@ -58,14 +60,28 @@ class App extends Component {
     console.log(this.state.currentUser)
   }
 
-  handleFavorite = () => {
+  handleFavorite = (e, albumData) => {
+    console.log(albumData)
+    console.log('target', e.target)
     if(!this.state.currentUser) {
       this.setState({error: 'You must sign in before favoriting'})
     } else {
       this.setState({error: ''})
     }
+      const favorite = {
+        
+        album_id: albumData.collectionId,
+        artist_name: albumData.artistName,
+        album_name: albumData.collectionName,
+        artwork_url: albumData.artworkUrl100,
+        release_date: albumData.releaseDate,
+        content_advisory_rating: albumData.collectionExplicitness || 'N/A',
+        primary_genre_name: albumData.primaryGenreName
+      }
+      addToFavorites(favorite, this.state.currentUser.id)
+    }
 
-  }
+
 
   render() {
     return (

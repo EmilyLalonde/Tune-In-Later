@@ -1,7 +1,7 @@
 import "./Album.css";
 import React from "react";
 
-const Album = ({ albumData, handleFavorite }) => {
+const Album = ({ albumData, handleFavorite, }) => {
   // console.log('handlefav', handleFavorite)
   return (
     <article className='Album'>
@@ -9,7 +9,7 @@ const Album = ({ albumData, handleFavorite }) => {
       <p>{albumData.releaseDate.substring(0,4)}</p>
       <p>{albumData.collectionName}</p>
       <img src={albumData.artworkUrl100} alt="" className="coverArt"/>
-      <button onClick={handleFavorite}>Save for later</button>
+      <button onClick={(e) => handleFavorite(e, albumData)}>Save for later</button>
     </article>
   );
 };

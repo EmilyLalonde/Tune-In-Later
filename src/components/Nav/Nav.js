@@ -4,7 +4,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
-    console.log(props.currentUser)
     return (
         <nav>
             <h2>TuneIn!(Later)</h2>

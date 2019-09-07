@@ -7,7 +7,8 @@ class LoginForm extends Component {
     super(props)
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      id: ''
     }
   }
 
@@ -20,6 +21,7 @@ class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const user = {
+      id: this.state.id,
       email: this.state.email,
       password: this.state.password
     }
