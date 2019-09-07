@@ -11,7 +11,7 @@ const Nav = (props) => {
             <NavLink to='/' className='Nav'>Home</NavLink>
             <NavLink to='/favorites' className='Nav'>Favorites</NavLink>
             <NavLink to='/login' className='Nav'>Log In</NavLink>
-            <NavLink to='/logout' className='Nav'>Log Out</NavLink>
+            <NavLink to='/create-user' className='Nav'>Create Account</NavLink>
             {props.currentUser && <button onClick={props.handleLogout}>Sign Out</button>}
             <SearchForm />
         </nav>

@@ -73,7 +73,7 @@ class App extends Component {
             <WelcomeContainer albums={this.state.rock} />
           </div>
         }/>
-        <Route exact path='/login' render={() => <LoginForm loginTheUser={this.loginTheUser}/>} />
+        {this.state.currentUser ? <Redirect  to='/'/> : <Route exact path='/login' render={() => <LoginForm loginTheUser={this.loginTheUser}/>} />}
         <Route exact path='/create-user' render={() => <CreateUserForm createTheUser={this.createTheUser}/>} />
       </div>
     );
