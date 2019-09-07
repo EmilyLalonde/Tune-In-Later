@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { getAlbums } from "../../apiCalls/apiCalls.js";
+import { getAlbums, createUser } from "../../apiCalls/apiCalls.js";
 import { Route, NavLink } from 'react-router-dom';
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
 import LoginForm from '../LoginForm/LoginForm';
+import CreateUserForm from '../CreateUserForm/CreateUserForm'
 import Nav from '../Nav/Nav'
 import "./App.css";
 
@@ -14,7 +15,8 @@ class App extends Component {
       country: [],
       rock: [],
       pop: [],
-      error: ""
+      error: "",
+      currentUser: null
     };
   }
   async componentDidMount() {
@@ -38,6 +40,12 @@ class App extends Component {
       }
   }
 
+  createTheUser = (user) => {
+    createUser(user)
+    .then(data => this.setState({currentUser: data}))
+    .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div>
@@ -54,6 +62,7 @@ class App extends Component {
           </div>
         } />
         <Route exact path='/login' render={() => <LoginForm />} />
+        <Route exact path='/create-user' render={() => <CreateUserForm createTheUser={this.createTheUser}/>} />
       </div>
     );
   }
