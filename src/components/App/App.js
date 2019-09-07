@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getAlbums, createUser, loginUser } from "../../apiCalls/apiCalls.js";
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Redirect } from 'react-router-dom';
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
 import LoginForm from '../LoginForm/LoginForm';
@@ -16,7 +16,8 @@ class App extends Component {
       rock: [],
       pop: [],
       error: "",
-      currentUser: null
+      currentUser: null,
+      redirect: true
     };
   }
   async componentDidMount() {
@@ -52,13 +53,18 @@ class App extends Component {
     .catch(err => this.setState({error: err.message}))
   }
 
+  logoutUser =() => {
+    this.setState({currentUser: null});
+    console.log(this.state.currentUser)
+  }
+
   render() {
     return (
       <div>
-          {this.state.error && <p>{this.state.error}</p>}
+        {this.state.error && <p>{this.state.error}</p>}
+        <Nav currentUser={this.state.currentUser} handleLogout={this.logoutUser}/>
         <Route exact path='/' render={() => 
           <div>
-            <Nav />
             <h2>Doo-Wop</h2>
             <WelcomeContainer albums={this.state.country} />
             <h2>Hair Metal</h2>
@@ -66,7 +72,7 @@ class App extends Component {
             <h2>Gangsta Rap</h2>
             <WelcomeContainer albums={this.state.rock} />
           </div>
-        } />
+        }/>
         <Route exact path='/login' render={() => <LoginForm loginTheUser={this.loginTheUser}/>} />
         <Route exact path='/create-user' render={() => <CreateUserForm createTheUser={this.createTheUser}/>} />
       </div>

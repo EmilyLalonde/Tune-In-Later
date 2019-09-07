@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom'
 import './LoginForm.css';
 
 class LoginForm extends Component {
@@ -22,13 +23,13 @@ class LoginForm extends Component {
       email: this.state.email,
       password: this.state.password
     }
-
     this.props.loginTheUser(user)
   }
 
   render() {
     return (
       <form>
+        {this.props.error && <p>{this.props.error}</p>}
         <input
           type='text'
           name='email'

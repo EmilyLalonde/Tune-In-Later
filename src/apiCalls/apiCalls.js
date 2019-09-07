@@ -29,7 +29,7 @@ export const loginUser = async user => {
   }
   const response = await fetch(url, options);
   if (!response.ok) {
-    throw new Error('There was an error logging you in')
+    throw new Error('Email and passwords do not match')
   }
   const loginResponse = await response.json();
   return loginResponse
@@ -48,7 +48,7 @@ export const createUser = async user => {
   const response = await fetch(url, options);
   console.log('response', response)
   if (!response.ok) {
-    throw new Error('There was an error creating your account')
+    throw new Error('Email has already been used')
   }
   const loginResponse = await response.json();
   console.log(loginResponse)

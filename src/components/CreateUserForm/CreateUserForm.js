@@ -30,6 +30,7 @@ class CreateUserForm extends Component {
   render() {
     return (
       <form>
+        {this.props.error && <p>{this.props.error}</p>}
         <input
           type="text"
           name="name"
