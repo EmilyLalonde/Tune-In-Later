@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { getAlbums } from "../../apiCalls/apiCalls.js";
+import { Route, NavLink } from 'react-router-dom';
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
+import LoginForm from '../LoginForm/LoginForm';
 import Nav from '../Nav/Nav'
 import "./App.css";
 
@@ -39,14 +41,19 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <Nav />
-        <h2>Doo-Wop</h2>
-        <WelcomeContainer albums={this.state.country} />
-        <h2>Hair Metal</h2>
-        <WelcomeContainer albums={this.state.pop} />
-        <h2>Gangsta Rap</h2>
-        <WelcomeContainer albums={this.state.rock} />
+          {this.state.error && <p>{this.state.error}</p>}
+        <Route exact path='/' render={() => 
+          <div>
+            <Nav />
+            <h2>Doo-Wop</h2>
+            <WelcomeContainer albums={this.state.country} />
+            <h2>Hair Metal</h2>
+            <WelcomeContainer albums={this.state.pop} />
+            <h2>Gangsta Rap</h2>
+            <WelcomeContainer albums={this.state.rock} />
+          </div>
+        } />
+        <Route exact path='/login' render={() => <LoginForm />} />
       </div>
     );
   }
