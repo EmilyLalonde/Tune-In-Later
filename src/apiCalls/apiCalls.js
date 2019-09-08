@@ -66,6 +66,7 @@ export const addToFavorites = async (favorite, id) => {
     throw new Error('There was an error saving your favorites')
   }
   const addFavsResponse = await response.json();
+  console.log(addFavsResponse)
   return addFavsResponse
 }
 

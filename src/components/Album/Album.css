@@ -8,3 +8,11 @@
 .coverArt {
     margin: auto;
 }
+
+.favorite {
+    background-color: green
+}
+
+.notFavorite {
+    background-color: red
+}

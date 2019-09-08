@@ -3,10 +3,23 @@ import React from "react";
 import Album from "../Album/Album";
 
 const FavoritesContainer = ({ favorites, handleFavorite }) => {
-  const allFavs = favorites.favorites;
-  console.log(favorites)
-  const favoriteAlbumCards = allFavs.map(album => {
-    return <Album key={album.collectionId} albumData={album} handleFavorite={handleFavorite}/>;
+  const favs = favorites.favorites;
+  console.log(favs)
+  const idsOfAllFavs = []
+  if(favs){  
+    favs.forEach(fav => idsOfAllFavs.push(fav.album_id))
+  }
+  console.log(idsOfAllFavs)
+  
+  const isThisAFav = (album) =>{
+  if(idsOfAllFavs.includes(album.album_id)){
+    return true
+  }else {
+    return false
+  }
+}
+  const favoriteAlbumCards = favs.map(album => {
+    return <Album isFav={isThisAFav(album)} key={album.collectionId} albumData={album} handleFavorite={handleFavorite}/>;
   });
 
   return (

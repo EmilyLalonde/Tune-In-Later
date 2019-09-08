@@ -116,16 +116,21 @@ class App extends Component {
               <WelcomeContainer
                 albums={this.state.country}
                 handleFavorite={this.handleFavorite}
+                favorites={this.state.favorites}
               />
               <h2>Hair Metal</h2>
               <WelcomeContainer
                 albums={this.state.pop}
                 handleFavorite={this.handleFavorite}
+                favorites={this.state.favorites}
+
               />
               <h2>Gangsta Rap</h2>
               <WelcomeContainer
                 albums={this.state.rock}
                 handleFavorite={this.handleFavorite}
+                favorites={this.state.favorites}
+
               />
             </div>
           )}
