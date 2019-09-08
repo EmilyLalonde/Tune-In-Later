@@ -4,12 +4,10 @@ import Album from "../Album/Album";
 
 const FavoritesContainer = ({ favorites, handleFavorite }) => {
   const favs = favorites.favorites;
-  console.log(favs)
   const idsOfAllFavs = []
   if(favs){  
     favs.forEach(fav => idsOfAllFavs.push(fav.album_id))
   }
-  console.log(idsOfAllFavs)
   
   const isThisAFav = (album) =>{
   if(idsOfAllFavs.includes(album.album_id)){

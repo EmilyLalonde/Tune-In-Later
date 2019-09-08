@@ -78,6 +78,7 @@ export const deleteFavorite = async (albumId, id) => {
     }
   }
   const response = await fetch(url, options);
+  console.log('response in the delete', response)
   if (!response.ok) {
     throw new Error('There was an error deleting the favorite')
   }
@@ -85,10 +86,12 @@ export const deleteFavorite = async (albumId, id) => {
 
 export const getFavorites = async (id) => {
   const url = `http://localhost:3001/api/v1/users/${id.id}/albumfavorites/`;
+  console.log('get url', url)
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error('There was an error saving your favorites')
   }
   const getFavsResponse = await response.json();
+  console.log('greg in the get', getFavsResponse)
   return getFavsResponse
 }
