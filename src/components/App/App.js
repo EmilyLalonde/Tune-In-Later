@@ -52,24 +52,21 @@ class App extends Component {
     loginUser(user)
     .then(data => this.setState({currentUser: data}))
     .then(() => getFavorites(this.state.currentUser))
+    .then(allFavs => this.setState({favorites: allFavs}))
     .catch(err => this.setState({error: err.message}))
   }
 
   logoutUser = () => {
     this.setState({currentUser: null});
-    console.log(this.state.currentUser)
   }
 
   handleFavorite = (e, albumData) => {
-    console.log(albumData)
-    console.log('target', e.target)
     if(!this.state.currentUser) {
       this.setState({error: 'You must sign in before favoriting'})
     } else {
       this.setState({error: ''})
     }
       const favorite = {
-        
         album_id: albumData.collectionId,
         artist_name: albumData.artistName,
         album_name: albumData.collectionName,
@@ -79,11 +76,14 @@ class App extends Component {
         primary_genre_name: albumData.primaryGenreName
       }
       addToFavorites(favorite, this.state.currentUser.id)
+      .then(() => getFavorites(this.state.currentUser))
+      .then(favs => this.setState({favorites: favs}))
+      .catch(err => this.setState({error: err}))
     }
-
-
-
-  render() {
+    
+    
+    
+    render() {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}

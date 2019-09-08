@@ -3,8 +3,10 @@ import React from "react";
 import Album from "../Album/Album";
 
 const FavoritesContainer = ({ favorites, handleFavorite }) => {
-  const favoriteAlbumCards = favorites.map(album => {
-    return <Album albumData={album} handleFavorite={handleFavorite}/>;
+  const allFavs = favorites.favorites;
+  console.log(favorites)
+  const favoriteAlbumCards = allFavs.map(album => {
+    return <Album key={album.collectionId} albumData={album} handleFavorite={handleFavorite}/>;
   });
 
   return (

@@ -48,8 +48,8 @@ export const createUser = async user => {
   if (!response.ok) {
     throw new Error('Email has already been used')
   }
-  const loginResponse = await response.json();
-  return loginResponse
+  const createUserResponse = await response.json();
+  return createUserResponse
 }
 
 export const addToFavorites = async (favorite, id) => {
@@ -61,26 +61,20 @@ export const addToFavorites = async (favorite, id) => {
     },
     body: JSON.stringify({...favorite})
   }
-  console.log('options', options)
   const response = await fetch(url, options);
-  console.log('response', response)
   if (!response.ok) {
     throw new Error('There was an error saving your favorites')
   }
-  const loginResponse = await response.json();
-  console.log(loginResponse)
-  return loginResponse
+  const addFavsResponse = await response.json();
+  return addFavsResponse
 }
 
 export const getFavorites = async (id) => {
-  console.log('id', id)
   const url = `http://localhost:3001/api/v1/users/${id.id}/albumfavorites/`;
   const response = await fetch(url);
-  console.log('response', response)
   if (!response.ok) {
     throw new Error('There was an error saving your favorites')
   }
-  const loginResponse = await response.json();
-  console.log(loginResponse)
-  return loginResponse
+  const getFavsResponse = await response.json();
+  return getFavsResponse
 }
