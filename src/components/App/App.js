@@ -4,7 +4,8 @@ import {
   createUser,
   loginUser,
   addToFavorites,
-  getFavorites
+  getFavorites,
+  deleteFavorite
 } from "../../apiCalls/apiCalls.js";
 import { Route, NavLink, Redirect } from "react-router-dom";
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
@@ -79,10 +80,14 @@ class App extends Component {
       this.setState({ error: "" });
     }
     const foundAlbum = this.state.favorites.favorites.find(favorite => {
-      console.log("favs", favorite);
-      return favorite.album_id === albumData.collectionId;
+      return favorite.collectionId === albumData.album_id;
     });
     if (foundAlbum === undefined) {
+      deleteFavorite(albumData.album_id, this.state.currentUser.id)
+      .then(() => getFavorites(this.state.currentUser))
+        .then(data => this.setState({favorites: data}))
+        .catch(err => this.setState({ error: err }));
+    } else {
       const favorite = {
         album_id: albumData.collectionId,
         artist_name: albumData.artistName,

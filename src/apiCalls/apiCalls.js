@@ -66,8 +66,21 @@ export const addToFavorites = async (favorite, id) => {
     throw new Error('There was an error saving your favorites')
   }
   const addFavsResponse = await response.json();
-  console.log(addFavsResponse)
   return addFavsResponse
+}
+
+export const deleteFavorite = async (albumId, id) => {
+  const url = `http://localhost:3001/api/v1/users/${id}/albumfavorites/${albumId}`;
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw new Error('There was an error deleting the favorite')
+  }
 }
 
 export const getFavorites = async (id) => {
