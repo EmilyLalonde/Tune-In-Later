@@ -54,6 +54,7 @@ class App extends Component {
   createTheUser = user => {
     createUser(user)
       .then(data => this.setState({ currentUser: data }))
+      .then(() => this.setState({ favorites: {favorites: []} }))
       .catch(err => this.setState({ error: err.message }));
   };
 
@@ -106,51 +107,6 @@ class App extends Component {
       this.setState({error: message})
     }
   }
-
-  // handleFavorite = (e, albumData) => {
-  //   if (!this.state.currentUser) {
-  //     this.setState({ error: "You must sign in before favoriting" });
-  //   } else {
-  //     this.setState({ error: "" });
-  //   }
-  //   const foundAlbum = this.state.favorites.favorites.find(favorite => {
-  //     return favorite.collectionId === albumData.album_id;
-  //   });
-  //   //to deletefavorite found album should be in the favorites array, therefore, not undefined
-  //   console.log('this is the found alubm', foundAlbum)
-  //   if (foundAlbum !== undefined) {
-  //     console.log('in if', foundAlbum)
-  //     deleteFavorite(albumData.collectionId, this.state.currentUser.id)
-  //     getFavorites(this.state.currentUser)
-  //       // .then(greg => console.log('greg3', greg))
-  //       .then(data => this.setState({favorites: data.favorites}))
-  //       .catch(err => this.setState({ error: err }));
-  //   } else {
-  //     console.log('in else', foundAlbum)
-  //     const favoritesIds = [];
-  //     this.state.favorites.favorites.forEach(fave => favoritesIds.push(fave.album_id))
-  //     //if the array does not have found albums id, this should be posted as a favorite
-  //     if (!favoritesIds.includes(foundAlbum.album_id)) {
-  //       console.log('in delete if')
-  //     const favorite = {
-  //       album_id: albumData.collectionId,
-  //       artist_name: albumData.artistName,
-  //       album_name: albumData.collectionName,
-  //       artwork_url: albumData.artworkUrl100,
-  //       release_date: albumData.releaseDate,
-  //       content_advisory_rating: albumData.collectionExplicitness || "N/A",
-  //       primary_genre_name: albumData.primaryGenreName
-  //     };
-  //     addToFavorites(favorite, this.state.currentUser.id)
-  //       .then(() => getFavorites(this.state.currentUser))
-  //       .then(favs => this.setState({ favorites: favs }))
-  //       .catch(err => this.setState({ error: err }));
-  //     }
-  //   } 
-  //   // else {
-  //   //   console.log('in the delete if')
-  //   // }
-  // };
 
   render() {
     return (
