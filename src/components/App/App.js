@@ -65,7 +65,11 @@ class App extends Component {
   };
 
   logoutUser = () => {
-    this.setState({ currentUser: null });
+    this.setState({ 
+      currentUser: null,
+      favorites: [],
+      error: "",
+    });
   };
 
   handleFavorite = (e, albumData) => {
