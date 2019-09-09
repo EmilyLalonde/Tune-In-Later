@@ -3,13 +3,13 @@ export const favoriteReducer = (state=[], action) => {
     case 'HANDLE_ADD':
       return [...state, action.albumData]
     case 'HANDLE_DELETE':
-    const remainingAlbums = state.filter(album => {
-      return album.id !== action.albumData.id
-    })
-    return remainingAlbums
+      const remainingAlbums = state.filter(album => {
+        return album.id !== action.albumData.id
+      })
+      return remainingAlbums
     case 'GET_FAVORITES':
-      return action.albumData
-      default:
-        return state
+      return action.favorites
+    default:
+      return state
   }
 }
