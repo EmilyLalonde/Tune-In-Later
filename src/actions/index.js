@@ -13,7 +13,7 @@ export const logoutUser = () => ({
 })
 
 export const getTheFavorites = albumData => ({
-  type: 'GET_FAVORITE',
+  type: 'GET_FAVORITES',
   albumData
 })
 
