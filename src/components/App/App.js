@@ -7,6 +7,15 @@ import {
   getFavorites,
   deleteFavorite
 } from "../../apiCalls/apiCalls.js";
+import {
+  createTheUser,
+  loginTheUser,
+  logoutUser,
+  handleAdd,
+  getTheFavorites,
+  handleDelete
+} from '../../actions'
+import { connect } from 'react-redux';
 import { Route, NavLink, Redirect } from "react-router-dom";
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
@@ -16,8 +25,8 @@ import Nav from "../Nav/Nav";
 import "./App.css";
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       country: [],
       rock: [],
@@ -25,7 +34,6 @@ class App extends Component {
       error: "",
       currentUser: null,
       favorites: [],
-      isFavorited: false
     };
   }
   async componentDidMount() {
@@ -53,16 +61,18 @@ class App extends Component {
 
   createTheUser = user => {
     createUser(user)
-      .then(data => this.setState({ currentUser: data }))
-      .then(() => this.setState({ favorites: {favorites: []} }))
+      .then(user => this.props.createTheUser(user))
+      .then(() => this.props.getTheFavorites(this.state.currentUser))
       .catch(err => this.setState({ error: err.message }));
   };
 
   loginTheUser = user => {
+    //async await?
     loginUser(user)
-      .then(data => this.setState({ currentUser: data }))
-      .then(() => getFavorites(this.state.currentUser))
-      .then(allFavs => this.setState({ favorites: allFavs }))
+    .then(user => this.props.loginTheUser(user))
+    .then(() => getFavorites(this.state.currentUser.id))
+    .then(() => this.props.getTheFavorites(this.state.currentUser))
+      // .then(allFavs => this.setState({ favorites: allFavs }))
       .catch(err => this.setState({ error: err.message }));
   };
 
@@ -74,7 +84,7 @@ class App extends Component {
     });
   };
 
-  handleFavorite = (e, albumData) => {
+  handleFavorite = (albumData) => {
     console.log('handleFave Albumdata', albumData)
     !this.state.currentUser ? this.setState({ error: "You must sign in before favoriting" }) : this.setState({ error: "" });
     const albumIsFound = this.state.favorites.favorites.some(fave => fave.album_id === (albumData.collectionId || albumData.album_id))
@@ -109,6 +119,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
@@ -173,4 +184,19 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  error: state.errorReducer,
+  currentUser: state.currentUserReducer,
+  favorites: state.favoriteReducer,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  getTheFavorites: (user) => dispatch(getTheFavorites(user)),
+  createTheUser: (user) => dispatch(createTheUser(user)),
+  loginTheUser: (user) => dispatch(loginTheUser(user)),
+  logoutUser: (user) => dispatch(logoutUser(user)),
+  handleAdd: (albumData) => dispatch(handleAdd(albumData)),
+  handleDelete: (albumData) => dispatch(handleDelete(albumData))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
