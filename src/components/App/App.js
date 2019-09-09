@@ -16,7 +16,7 @@ import {
   handleDelete
 } from '../../actions'
 import { connect } from 'react-redux';
-import { Route, NavLink, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
 import LoginForm from "../LoginForm/LoginForm";
@@ -67,13 +67,11 @@ class App extends Component {
   };
 
   loginTheUser = user => {
-    //async await?
     loginUser(user)
     .then(user => this.props.loginTheUser(user))
-    .then(() => getFavorites(this.state.currentUser.id))
-    .then(() => this.props.getTheFavorites(this.state.currentUser))
-      // .then(allFavs => this.setState({ favorites: allFavs }))
-      .catch(err => this.setState({ error: err.message }));
+    .then(response => getFavorites(response.user))
+    .then(response => this.props.getTheFavorites(response.favorites))
+    .catch(err => this.setState({ error: err.message }));
   };
 
   logoutUser = () => {
@@ -119,7 +117,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
