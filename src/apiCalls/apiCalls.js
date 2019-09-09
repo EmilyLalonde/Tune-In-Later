@@ -85,6 +85,7 @@ export const deleteFavorite = async (albumId, id) => {
 }
 
 export const getFavorites = async (id) => {
+  console.log('id', id)
   const url = `http://localhost:3001/api/v1/users/${id.id}/albumfavorites/`;
   console.log('get url', url)
   const response = await fetch(url);
