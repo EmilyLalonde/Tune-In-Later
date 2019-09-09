@@ -71,7 +71,9 @@ export const addToFavorites = async (favorite, id) => {
 }
 
 export const deleteFavorite = async (albumId, id) => {
+  // console.log('fire deleteFavorite', albumId, id)
   const url = `http://localhost:3001/api/v1/users/${id}/albumfavorites/${albumId}`;
+  // console.log('delete url', url)
   const options = {
     method: "DELETE",
     headers: {

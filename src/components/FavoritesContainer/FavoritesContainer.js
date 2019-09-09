@@ -1,12 +1,13 @@
 import "./FavoritesContainer.css";
 import React from "react";
 import Album from "../Album/Album";
+import { connect } from 'react-redux';
 
 const FavoritesContainer = ({ favorites, handleFavorite }) => {
-  const favs = favorites.favorites;
-  const idsOfAllFavs = []
-  if(favs){  
-    favs.forEach(fav => idsOfAllFavs.push(fav.album_id))
+  console.log('in FC', handleFavorite)
+  const idsOfAllFavs = [];
+  if(favorites){  
+    favorites.forEach(fav => idsOfAllFavs.push(fav.album_id))
   }
   
   const isThisAFav = (album) =>{
@@ -16,7 +17,7 @@ const FavoritesContainer = ({ favorites, handleFavorite }) => {
     return false
   }
 }
-  const favoriteAlbumCards = favs.map(album => {
+  const favoriteAlbumCards = favorites.map(album => {
     return <Album isFav={isThisAFav(album)} key={album.collectionId} albumData={album} handleFavorite={handleFavorite}/>;
   });
 
@@ -27,4 +28,8 @@ const FavoritesContainer = ({ favorites, handleFavorite }) => {
     );
 };
 
-export default FavoritesContainer;
+const mapStateToProps = state => ({
+  favorites: state.favorites
+})
+
+export default connect(mapStateToProps)(FavoritesContainer);
