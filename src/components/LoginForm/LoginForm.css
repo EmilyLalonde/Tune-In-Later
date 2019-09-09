@@ -1,0 +1,16 @@
+.formInput {
+  display: block;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: grid;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.login-button {
+  height: 40px;
+}
+
