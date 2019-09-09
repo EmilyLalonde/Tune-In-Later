@@ -18,7 +18,7 @@ const FavoritesContainer = ({ favorites, handleFavorite }) => {
   }
 }
   const favoriteAlbumCards = favorites.map(album => {
-    return <Album isFav={isThisAFav(album)} key={album.collectionId} albumData={album} handleFavorite={handleFavorite(album)}/>;
+    return <Album isFav={isThisAFav(album)} key={album.collectionId} albumData={album} handleFavorite={handleFavorite}/>;
   });
 
   return (
