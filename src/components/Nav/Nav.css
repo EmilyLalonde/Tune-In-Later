@@ -1,0 +1,15 @@
+nav {
+  display: flex;
+  height: 10vh;
+  justify-content: space-between; 
+  padding-top: 20px;
+}
+
+a.Nav {
+  text-decoration: none;
+}
+
+h2 {
+  margin: 0;
+}
+

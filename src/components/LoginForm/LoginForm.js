@@ -30,7 +30,7 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form>
+      <form className="login-form">
         {this.props.error && <p>{this.props.error}</p>}
         <input
           type='text'
@@ -49,6 +49,7 @@ class LoginForm extends Component {
           className='formInput'
         />
         <button
+          className="login-button"
           onClick={this.handleSubmit}
         >SUBMIT</button>
       </form>

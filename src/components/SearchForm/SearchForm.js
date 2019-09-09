@@ -29,7 +29,7 @@ class SearchForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search-bar">
         <input type="text" placeholder="Search for an Artist" name="artist" className='search' value={this.state.artist} onChange={this.handleChange}/>
         <button onClick={this.handleSubmit}>Submit</button>
         {!!this.state.albums.length && <FavoritesContainer albums={this.state.albums}/>}

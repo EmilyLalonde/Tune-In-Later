@@ -1,18 +1,61 @@
 .Album {
     border: 2px solid black;
-    height: 300px;
-    margin: 10px;
-    width: 200px;
+    height: 150px;
+    margin: 13%;
+    width: 150px;
+    cursor: pointer;
+    perspective: 600;
+    position: relative;
 }
 
-.coverArt {
-    margin: auto;
+.card {
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: all 1s ease-in-out;
+    width: 100%;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.card .coverArt {
+    backface-visibility: hidden;
+    border-radius: 6px;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+}
+
+.card .card-back {
+    backface-visibility: hidden;
+    background: #eaeaed;
+    color: #0087cc;
+    height: 100%;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+.album-name,
+p {
+    margin: 0;
+    font-size: 10px;
 }
 
 .favorite {
-    background-color: green
+    background-color: green;
+    float: right;
 }
 
 .notFavorite {
-    background-color: red
+    background-color: red;
+    float: right;
+}
+
+.card-border {
+    border: 1px solid black;
+    height: 200px;
+    width: 200px;
 }
