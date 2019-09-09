@@ -8,7 +8,7 @@ export const favoriteReducer = (state=[], action) => {
       })
       return remainingAlbums
     case 'GET_FAVORITES':
-      return action.albumData
+      return action.favorites
     default:
       return state
   }

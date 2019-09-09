@@ -1,6 +1,7 @@
 import "./WelcomeContainer.css";
 import React from "react";
 import Album from "../Album/Album";
+import { connect } from 'react-redux';
 
 const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
   const favs = favorites.favorites
@@ -23,4 +24,8 @@ const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
   return <section className="WelcomeContainer">{albumCards}</section>;
 };
 
-export default WelcomeContainer;
+const mapStateToProps = state => ({
+  favorites: state.favorites
+})
+
+export default connect(mapStateToProps)(WelcomeContainer);

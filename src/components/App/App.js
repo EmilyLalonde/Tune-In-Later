@@ -32,8 +32,7 @@ class App extends Component {
       rock: [],
       pop: [],
       error: "",
-      currentUser: null,
-      favorites: [],
+      currentUser: null
     };
   }
   async componentDidMount() {
@@ -62,7 +61,8 @@ class App extends Component {
   createTheUser = user => {
     createUser(user)
       .then(user => this.props.createTheUser(user))
-      .then(() => this.props.getTheFavorites(this.state.currentUser))
+      .then(response => getFavorites(response.user))
+      .then(response => this.props.getTheFavorites(response.favorites))
       .catch(err => this.setState({ error: err.message }));
   };
 
@@ -83,9 +83,9 @@ class App extends Component {
   };
 
   handleFavorite = (albumData) => {
-    console.log('handleFave Albumdata', albumData)
+    console.log('handleFave props', this.props)
     !this.state.currentUser ? this.setState({ error: "You must sign in before favoriting" }) : this.setState({ error: "" });
-    const albumIsFound = this.state.favorites.favorites.some(fave => fave.album_id === (albumData.collectionId || albumData.album_id))
+    const albumIsFound = this.props.favorites.some(fave => fave.album_id === (albumData.collectionId || albumData.album_id))
     albumIsFound ? this.handleDelete(albumData) : this.handleAdd(albumData);
   }
 
@@ -182,9 +182,9 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  error: state.errorReducer,
-  currentUser: state.currentUserReducer,
-  favorites: state.favoriteReducer,
+  error: state.error,
+  currentUser: state.currentUser,
+  favorites: state.favorites,
 })
 
 const mapDispatchToProps = (dispatch) => ({
