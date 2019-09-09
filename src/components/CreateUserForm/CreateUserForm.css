@@ -1,0 +1,9 @@
+.create-user-form {
+  display: grid;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.create-user-button {
+  height: 40px;
+}

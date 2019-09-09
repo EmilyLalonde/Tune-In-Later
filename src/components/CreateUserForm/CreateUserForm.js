@@ -29,7 +29,7 @@ class CreateUserForm extends Component {
 
   render() {
     return (
-      <form>
+      <form className="create-user-form">
         {this.props.error && <p>{this.props.error}</p>}
         <input
           type="text"
@@ -55,7 +55,7 @@ class CreateUserForm extends Component {
           onChange={this.handleTyping}
           className="formInput"
         />
-        <button onClick={this.handleSubmit}>SUBMIT</button>
+        <button className="create-user-button" onClick={this.handleSubmit}>SUBMIT</button>
       </form>
     );
   }
