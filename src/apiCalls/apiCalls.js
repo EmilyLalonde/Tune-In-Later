@@ -1,5 +1,5 @@
 export const getAlbums = async (id) => {
-  const url = `https://itunes.apple.com/search?term=music&genreId=${id}&limit=4`
+  const url = `https://itunes.apple.com/search?term=music&genreId=${id}&limit=5`
   const response = await fetch(url);
   if(!response.ok) {
     throw new Error('There was an error getting your albums')
@@ -15,6 +15,7 @@ export const getArtistAlbums = async (artist) => {
     throw new Error('There was an error getting your albums')
   }
   const albums = await response.json();
+  console.log('getArtistAlbums',albums.results)
   return albums.results
 }
 
@@ -84,6 +85,7 @@ export const deleteFavorite = async (albumId, id) => {
     throw new Error('There was an error deleting the favorite')
   }
 }
+
 
 export const getFavorites = async (user) => {
   const url = `http://localhost:3001/api/v1/users/${user.id}/albumfavorites/`;

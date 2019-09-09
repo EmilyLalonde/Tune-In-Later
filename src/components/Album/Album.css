@@ -1,8 +1,10 @@
 .Album {
-    border: 2px solid black;
-    height: 150px;
-    margin: 13%;
-    width: 150px;
+    border-radius: 8px;
+    border: 2px solid #3c305e;
+    height: 200px;
+    margin: 6%;
+    margin-top: 12%;
+    width: 200px;
     cursor: pointer;
     perspective: 600;
     position: relative;
@@ -31,8 +33,8 @@
 
 .card .card-back {
     backface-visibility: hidden;
-    background: #eaeaed;
-    color: #0087cc;
+    background-color: rgba(0,0,0,0);
+    color: white;
     height: 100%;
     text-align: center;
     transform: rotateY(180deg);
@@ -41,21 +43,39 @@
 .album-name,
 p {
     margin: 0;
-    font-size: 10px;
+    font-size: 30px;
 }
 
 .favorite {
-    background-color: green;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    background-image: url("https://cdn0.iconfinder.com/data/icons/rafif-flat-vol-4/512/heart-512.png");
+    background-size: cover;
+    height: 25px;
+    margin-top: 1%;
+    margin-right: 3%;
+    width: 25px;
     float: right;
 }
 
+
+
 .notFavorite {
-    background-color: red;
+    background-color: rgba(0,0,0,0);
+    border: none;
+    background-image: url("https://cdn1.iconfinder.com/data/icons/ui-22/24/496-512.png");
+    background-size: cover;
+    height: 25px;
+    margin-top: 1%;
+    margin-right: 3%;
+    width: 25px;
     float: right;
 }
 
 .card-border {
-    border: 1px solid black;
-    height: 200px;
-    width: 200px;
+    /* background-color: #15b0f6; */
+    border: 2px solid #3c305e;
+    border-radius: 8px;
+    height: 250px;
+    width: 250px;
 }

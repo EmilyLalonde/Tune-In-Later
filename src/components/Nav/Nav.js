@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Nav = (props) => {
     return (
         <nav>
-            <h2>TuneIn!(Later)</h2>
+            <h1>TuneIn!(Later)</h1>
             <NavLink to='/' className='Nav'>Home</NavLink>
             <NavLink to='/favorites' className='Nav'>Favorites</NavLink>
             <NavLink to='/login' className='Nav'>Log In</NavLink>

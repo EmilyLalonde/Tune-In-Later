@@ -31,6 +31,7 @@ class App extends Component {
       country: [],
       rock: [],
       pop: [],
+      britpop: [],
       error: "",
       currentUser: null
     };
@@ -53,6 +54,13 @@ class App extends Component {
     try {
       const rock = await getAlbums(1071);
       this.setState({ rock });
+    } catch ({ message }) {
+      this.setState({ error: message });
+    }
+
+    try {
+      const britpop = await getAlbums(1132);
+      this.setState({ britpop });
     } catch ({ message }) {
       this.setState({ error: message });
     }
@@ -125,25 +133,32 @@ class App extends Component {
           exact
           path="/"
           render={() => (
-            <div>
-              <h2>Doo-Wop</h2>
+            <div className="welcome-container">
+              <h2 className="welcome-h2">Doo-Wop</h2>
               <WelcomeContainer
                 albums={this.state.country}
                 handleFavorite={this.handleFavorite}
                 favorites={this.props.favorites}
               />
-              <h2>Hair Metal</h2>
+              <h2 className="welcome-h2">Hair Metal</h2>
               <WelcomeContainer
                 albums={this.state.pop}
                 handleFavorite={this.handleFavorite}
                 favorites={this.props.favorites}
 
               />
-              <h2>Gangsta Rap</h2>
+              <h2 className="welcome-h2">Gangsta Rap</h2>
               <WelcomeContainer
                 albums={this.state.rock}
                 handleFavorite={this.handleFavorite}
                 favorites={this.props.favorites}
+
+              />
+              <h2 className="welcome-h2">Britpop</h2>
+              <WelcomeContainer
+                albums={this.state.britpop}
+                handleFavorite={this.handleFavorite}
+                favorites={this.state.favorites}
 
               />
             </div>

@@ -28,6 +28,7 @@ class SearchForm extends Component {
   }
 
   render() {
+    console.log(this.state.artist)
     return (
       <div className="search-bar">
         <input type="text" placeholder="Search for an Artist" name="artist" className='search' value={this.state.artist} onChange={this.handleChange}/>
