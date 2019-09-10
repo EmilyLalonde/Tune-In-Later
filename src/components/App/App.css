@@ -1,11 +1,12 @@
 body {
     background-image: url('https://free4kwallpapers.com/uploads/originals/2018/01/28/abstract-background-wallpaper.jpg');
     background-repeat: no-repeat;
-    background-size: 100vw 150vh;
+    background-size: 100vw 180vh;
     font-family: Oswald, sans-serif;
 }
 
-.welcome-h2 {
+.welcome-h2,
+.artist-h2 {
   color: #002236;
   font-size: 40px;
   text-align: center;
@@ -49,4 +50,10 @@ body {
    inset 0 0 0.3vw  0.1vw #002236,
    inset 0 0 0.1vw  0.1vw #fff7f7;
    background-color: rgba(0, 0, 0, .3)
+}
+
+.error {
+  text-align: center;
+  color: white;
+  font-size: 30px;
 }

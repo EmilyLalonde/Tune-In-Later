@@ -36,3 +36,9 @@ h1 {
   margin-top: 40px;
 }
 
+.user-name {
+  color: white;
+  font-size: 50px;
+  margin-top: 2%;
+  margin-right: 8%;
+}

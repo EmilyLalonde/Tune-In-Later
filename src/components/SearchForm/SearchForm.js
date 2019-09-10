@@ -20,6 +20,7 @@ class SearchForm extends Component {
 
   async handleSubmit () {
     this.setState({albums: []})
+    this.setState({artist:''})
     try {
         const albums = await getArtistAlbums(this.state.artist);
         this.setState({ albums });
@@ -35,6 +36,7 @@ class SearchForm extends Component {
           <input type="text" placeholder="Search for an Artist..." name="artist" className='search' value={this.state.artist} onChange={this.handleChange}/>
           <button className="search-button" onClick={this.handleSubmit}>Submit</button>
         </div>
+        {!!this.state.albums.length && <h2 className="artist-h2">{this.state.artist}</h2>}
         {!!this.state.albums.length && <WelcomeContainer albums={this.state.albums} handleFavorite={this.props.handleFavorite}/>}
       </section>
     );
