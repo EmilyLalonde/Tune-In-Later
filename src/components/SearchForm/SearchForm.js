@@ -32,8 +32,8 @@ class SearchForm extends Component {
     return (
       <section>
         <div className="search-bar">
-          <input type="text" placeholder="Search for an Artist" name="artist" className='search' value={this.state.artist} onChange={this.handleChange}/>
-          <button onClick={this.handleSubmit}>Submit</button>
+          <input type="text" placeholder="Search for an Artist..." name="artist" className='search' value={this.state.artist} onChange={this.handleChange}/>
+          <button className="search-button" onClick={this.handleSubmit}>Submit</button>
         </div>
         {!!this.state.albums.length && <WelcomeContainer albums={this.state.albums} handleFavorite={this.props.handleFavorite}/>}
       </section>

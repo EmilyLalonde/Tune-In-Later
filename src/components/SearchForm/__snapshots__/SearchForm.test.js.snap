@@ -1,21 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchForm should match the snapshot with the correct props 1`] = `
-<div
-  className="search-bar"
->
-  <input
-    className="search"
-    name="artist"
-    onChange={[Function]}
-    placeholder="Search for an Artist"
-    type="text"
-    value=""
-  />
-  <button
-    onClick={[Function]}
+<section>
+  <div
+    className="search-bar"
   >
-    Submit
-  </button>
-</div>
+    <input
+      className="search"
+      name="artist"
+      onChange={[Function]}
+      placeholder="Search for an Artist"
+      type="text"
+      value=""
+    />
+    <button
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </div>
+</section>
 `;

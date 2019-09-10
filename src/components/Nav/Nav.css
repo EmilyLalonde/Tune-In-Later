@@ -2,20 +2,37 @@
 nav {
   display: flex;
   height: 10vh;
-  justify-content: space-between; 
+  justify-content: space-around; 
   align-items: center;
   padding-top: 20px;
 }
 
 a.Nav {
   text-decoration: none;
-  color: white;
+  color: #002236;
+  font-size: 30px;
+  font-weight: 600;
+  text-shadow:
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 30px #fff,
+    0 0 50px #38bcf4,
+    0 0 100px #38bcf4,
+    0 0 130px #38bcf4,
+    0 0 150px #38bcf4,
+    0 0 170px #38bcf4;
+}
+
+.Nav:hover {
+  color: #ed1228;
 }
 
 h1 {
-  color: #ee8d60;
-  font-size: 46px;
-  margin: 0;
-  margin-left: 1%
+  background-color: rgba(0,0,0,0);
+  background-image: url('https://cdn0.iconfinder.com/data/icons/control-media-button/121/sound_audio_multimedia_media_control_play_song_blue_icon-512.png');
+  background-size: cover;
+  height: 110px;
+  width: 110px;
+  margin-top: 40px;
 }
 
