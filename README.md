@@ -1,11 +1,11 @@
 # Tune In Later!
 
 ##### Created By:
--Katie Williams
+* Katie Williams
 
--Greg Anderson
+* Greg Anderson
 
--Emily Lalonde
+* Emily Lalonde
 
 ### Learning Goals For This Project:
 - Continue to write clear and SRP code using ES6 syntax
@@ -18,7 +18,12 @@
 
 - Make informed design descisions 
 
-
+### This Project Utilizes:
+- React/Redux
+- Jest
+- Enzyme
+- Webpack
+- React Router
 
 
 ### Home Page:
