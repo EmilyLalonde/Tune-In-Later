@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav should match the snapshot 1`] = `
+<nav>
+  <h1>
+    TuneIn!(Later)
+  </h1>
+  <NavLink
+    className="Nav"
+    to="/"
+  >
+    Home
+  </NavLink>
+  <NavLink
+    className="Nav"
+    to="/favorites"
+  >
+    Favorites
+  </NavLink>
+  <NavLink
+    className="Nav"
+    to="/login"
+  >
+    Log In
+  </NavLink>
+  <NavLink
+    className="Nav"
+    to="/create-user"
+  >
+    Create Account
+  </NavLink>
+  <button
+    onClick={[MockFunction]}
+  >
+    Sign Out
+  </button>
+  <SearchForm />
+</nav>
+`;

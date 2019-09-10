@@ -10,14 +10,6 @@ import {
   getFavorites
 } from "./apiCalls";
 
-// getAlbums-get
-// getArtistAlbums-get
-// loginUser-post
-// createUser-post
-// addToFavorites-post
-// deleteFavorite-delete
-// getFavorites-get
-
 describe("getAlbums", () => {
   let mockResponse;
   const mockAlbumId = 1071;

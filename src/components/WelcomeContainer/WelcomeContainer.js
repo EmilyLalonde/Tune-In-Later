@@ -3,7 +3,7 @@ import React from "react";
 import Album from "../Album/Album";
 import { connect } from 'react-redux';
 
-const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
+export const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
   const favs = favorites.favorites
   const idsOfAllFavs = []
   if(favs){  

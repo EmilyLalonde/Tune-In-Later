@@ -3,7 +3,12 @@ import { shallow } from 'enzyme'
 import SearchForm from './SearchForm';
 
 describe('SearchForm', () => {
-  it('should', () => {
-    expect(true).toEqual(true)
-  })
-})
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<SearchForm />)
+  });
+
+  it('should match the snapshot with the correct props', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+});
