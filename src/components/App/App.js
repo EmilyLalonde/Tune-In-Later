@@ -205,7 +205,6 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.error,
   currentUser: state.currentUser,
   favorites: state.favorites
 });
