@@ -2,12 +2,11 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import { App } from "./App";
 import { MemoryRouter } from "react-router";
-import Nav from "../Nav/Nav";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
-import LoginForm from '../LoginForm/LoginForm';
-import Album from '../Album/Album'
-import CreateUserForm from '../CreateUserForm/CreateUserForm'
+import LoginForm from "../LoginForm/LoginForm";
+import Album from "../Album/Album";
+import CreateUserForm from "../CreateUserForm/CreateUserForm";
 
 describe("App", () => {
   let wrapper;
@@ -52,7 +51,7 @@ describe("App Routes", () => {
     expect(wrapper.find(FavoritesContainer)).toHaveLength(0);
     expect(wrapper.find(WelcomeContainer)).toHaveLength(0);
   });
-  
+
   it("will make a Create User Form when Create User is called", () => {
     wrapper = mount(
       <MemoryRouter initialEntries={["/create-user"]}>
@@ -67,9 +66,9 @@ describe("App Routes", () => {
   });
 
   it("will make a Favorites when Favorites is called", () => {
-    const store = {favorites: []}
+    const store = { favorites: [] };
 
-    wrapper = shallow(<FavoritesContainer store={store}/>).dive()
+    wrapper = shallow(<FavoritesContainer store={store} />).dive();
     // newWrapper = shallow(
     //   <MemoryRouter initialEntries={["/favorites"]}>
     //     <FavoritesContainer />

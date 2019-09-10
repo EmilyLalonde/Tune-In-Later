@@ -1,7 +1,7 @@
 import './Nav.css'
-import SearchForm from '../SearchForm/SearchForm';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 const Nav = (props) => {
     return (
@@ -17,3 +17,8 @@ const Nav = (props) => {
 }
 
 export default Nav
+
+Nav.propTypes = {
+    currentUser: PropTypes.object,
+    handleLogout: PropTypes.func,
+  }

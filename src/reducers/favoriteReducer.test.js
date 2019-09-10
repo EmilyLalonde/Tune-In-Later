@@ -47,5 +47,4 @@ describe('favoriteReducer', () => {
     const expected = [];
     expect(result).toEqual(expected)
   });
-
 });
