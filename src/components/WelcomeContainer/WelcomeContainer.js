@@ -4,8 +4,6 @@ import Album from "../Album/Album";
 import { connect } from 'react-redux';
 
 const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
-  console.log(albums)
-  console.log(handleFavorite)
   const favs = favorites
   const idsOfAllFavs = []
   

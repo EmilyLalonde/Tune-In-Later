@@ -3,7 +3,13 @@ import { shallow } from 'enzyme'
 import LoginForm from './LoginForm';
 
 describe('LoginForm', () => {
-  it('should', () => {
-    expect(true).toEqual(true)
-  })
+
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<LoginForm />)
+  });
+
+  it('should match the snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 })

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Album should match the snapshot 1`] = `
+<div
+  className="card-border"
+>
+  <button
+    className="favorite"
+    onClick={[Function]}
+  >
+    Save for later
+  </button>
+  <article
+    className="Album"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-front"
+      >
+        <img
+          alt="album cover art"
+          className="coverArt"
+          src="https://is2-ssl.mzstatic.com/image/thumb/Music128/v4/a8/fc/39/a8fc39b7-3c90-9c5b-5b58-cc6a460662c4/source/100x100bb.jpg"
+        />
+      </div>
+      <div
+        className="card-back"
+      >
+        <h2
+          className="album-name"
+        >
+          Rick Ross
+        </h2>
+        <p>
+          2010
+        </p>
+        <p>
+          Teflon Don
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
+`;
