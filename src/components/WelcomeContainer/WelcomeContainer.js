@@ -4,7 +4,8 @@ import Album from "../Album/Album";
 import { connect } from 'react-redux';
 
 const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
-  const favs = favorites.favorites
+  const favs = favorites
+  console.log('favorites', favorites)
   const idsOfAllFavs = []
   if(favs){  
     favs.forEach(fav => idsOfAllFavs.push(fav.album_id))
