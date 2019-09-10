@@ -1,5 +1,6 @@
 import "./Album.css";
 import React from "react";
+import PropTypes from 'prop-types'
 
 const Album = ({ albumData, handleFavorite, isFav }) => {
   return (
@@ -22,3 +23,9 @@ const Album = ({ albumData, handleFavorite, isFav }) => {
 };
 
 export default Album;
+
+Album.propTypes = {
+  albumData: PropTypes.object,
+  handleFavorite: PropTypes.func,
+  isFav: PropTypes.bool
+}

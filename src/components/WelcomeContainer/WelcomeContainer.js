@@ -2,6 +2,7 @@ import "./WelcomeContainer.css";
 import React from "react";
 import Album from "../Album/Album";
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
   const favs = favorites
@@ -30,3 +31,8 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(WelcomeContainer);
+
+WelcomeContainer.propTypes = {
+  favorites: PropTypes.array,
+  handleFavorite: PropTypes.func,
+}
