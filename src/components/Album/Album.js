@@ -4,7 +4,7 @@ import React from "react";
 const Album = ({ albumData, handleFavorite, isFav }) => {
   return (
     <div className="card-border">
-      <button className={isFav ? 'favorite' : 'notFavorite'} onClick={() => handleFavorite(albumData)}>Save for later</button>
+      <button className={isFav ? 'favorite' : 'notFavorite'} onClick={() => handleFavorite(albumData)}></button>
     <article className='Album'>
       <div className="card">
       <div className="card-front">
