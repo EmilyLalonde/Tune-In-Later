@@ -8,6 +8,7 @@ import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 import "typeface-eczar";
+import "typeface-oswald";
 
 const store = createStore(rootReducer, composeWithDevTools());
 
