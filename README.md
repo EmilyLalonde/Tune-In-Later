@@ -2,7 +2,9 @@
 
 ##### Created By:
 -Katie Williams
+
 -Greg Anderson
+
 -Emily Lalonde
 
 ### Learning Goals For This Project:
