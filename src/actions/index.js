@@ -9,7 +9,7 @@ export const loginTheUser = user => ({
 })
 
 export const logoutUser = () => ({
-  type: 'LOGOUT_USER'
+  type: 'LOGOUT_USER',
 })
 
 export const getTheFavorites = favorites => ({

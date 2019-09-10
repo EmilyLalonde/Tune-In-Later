@@ -84,12 +84,9 @@ export class App extends Component {
     .catch(err => this.setState({ error: err.message }));
   };
 
-  logoutUser = () => {
-    this.setState({ 
-      currentUser: null,
-      favorites: [],
-      error: "",
-    });
+  logoutTheUser = () => {
+    this.props.loginTheUser(null);
+    this.props.getTheFavorites([])
   };
 
   handleFavorite = (albumData) => {
@@ -123,17 +120,13 @@ export class App extends Component {
     .catch(err => this.setState({ error: err }));
   }
 
-  setSearched = () => {
-    console.log('maybe')
-  }
-
   render() {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
         <Nav
           currentUser={this.props.currentUser}
-          handleLogout={this.logoutUser}
+          handleLogout={this.logoutTheUser}
           setSearched={this.setSearched}
         />
         <Route
@@ -215,7 +208,7 @@ const mapDispatchToProps = (dispatch) => ({
   getTheFavorites: (user) => dispatch(getTheFavorites(user)),
   createTheUser: (user) => dispatch(createTheUser(user)),
   loginTheUser: (user) => dispatch(loginTheUser(user)),
-  logoutUser: (user) => dispatch(logoutUser(user)),
+  logoutUser: () => dispatch(logoutUser()),
   handleAdd: (albumData) => dispatch(handleAdd(albumData)),
   handleDelete: (albumData) => dispatch(handleDelete(albumData))
 })
