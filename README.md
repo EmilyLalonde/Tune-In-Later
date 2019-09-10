@@ -6,3 +6,6 @@
 
 ### Create User Page:
 ![image](https://user-images.githubusercontent.com/47184994/64641609-be884680-d3c9-11e9-80c6-aec74869eaf7.png)
+
+### Favorites Page:
+![image](https://user-images.githubusercontent.com/47184994/64641698-f98a7a00-d3c9-11e9-958a-ff5471120c06.png)
