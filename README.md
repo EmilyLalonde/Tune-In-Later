@@ -8,6 +8,17 @@
 -Emily Lalonde
 
 ### Learning Goals For This Project:
+- Continue to write clear and SRP code using ES6 syntax
+
+- Solidify React concepts
+
+- Become comfortable using th fetch api for GET/POST/DELETE requests
+
+- Get comfortable with Redux lifecycle methods/actions/reducers
+
+- Make informed design descisions 
+
+
 
 
 ### Home Page:
