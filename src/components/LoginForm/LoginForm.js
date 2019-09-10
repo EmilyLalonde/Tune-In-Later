@@ -32,7 +32,7 @@ class LoginForm extends Component {
     console.log(this.props)
     return (
       <form className="login-form">
-        {this.props.error && <p>{this.props.error}</p>}
+        {this.props.error && <p className="error">{this.props.error}</p>}
         <input
           type='text'
           name='email'

@@ -14,8 +14,8 @@ import {
   handleAdd,
   getTheFavorites,
   handleDelete
-} from '../../actions'
-import { connect } from 'react-redux';
+} from "../../actions";
+import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 import FavoritesContainer from "../FavoritesContainer/FavoritesContainer";
 import WelcomeContainer from "../WelcomeContainer/WelcomeContainer";
@@ -33,10 +33,10 @@ export class App extends Component {
       country: [],
       rock: [],
       pop: [],
-      britpop: [],
-      searched: [],
-      error: "",
-      currentUser: null
+      britpop: []
+      // searched: [],
+      // error: "",
+      // currentUser: null
     };
   }
   async componentDidMount() {
@@ -70,6 +70,7 @@ export class App extends Component {
   }
 
   createTheUser = user => {
+    this.setState({error: ''})
     createUser(user)
       .then(user => this.props.createTheUser(user))
       .then(response => getFavorites(response.user))
@@ -78,53 +79,61 @@ export class App extends Component {
   };
 
   loginTheUser = user => {
+    this.setState({error: ''})
     loginUser(user)
-    .then(user => this.props.loginTheUser(user))
-    .then(response => getFavorites(response.user))
-    .then(response => this.props.getTheFavorites(response.favorites))
-    .catch(err => this.setState({ error: err.message }));
+      .then(user => this.props.loginTheUser(user))
+      .then(response => getFavorites(response.user))
+      .then(response => this.props.getTheFavorites(response.favorites))
+      .catch(err => this.setState({ error: err.message }));
   };
 
   logoutTheUser = () => {
     this.props.loginTheUser(null);
-    this.props.getTheFavorites([])
+    this.props.getTheFavorites([]);
   };
 
-  handleFavorite = (albumData) => {
-    console.log('handleFave albumdata', albumData)
-    !this.props.currentUser ? this.setState({ error: "You must sign in before favoriting" }) : this.setState({ error: "" });
-    const albumIsFound = this.props.favorites.some(fave => fave.album_id === (albumData.collectionId || albumData.album_id))
-    albumIsFound ? this.handleDelete(albumData) : this.handleAdd(albumData);
-  }
+  handleFavorite = albumData => {
+    if (this.props.currentUser === null) {
+      this.setState({ error: "Please log in to favorite an album" });
+    } else {
+      const albumIsFound = this.props.favorites.some(
+        fave => fave.album_id === (albumData.collectionId || albumData.album_id)
+      );
+      albumIsFound ? this.handleDelete(albumData) : this.handleAdd(albumData);
+    }
+  };
 
-  handleAdd = (albumData) => {
-    console.log('handleADD album data', albumData)
-        const favorite = {
-        album_id: albumData.collectionId,
-        artist_name: albumData.artistName,
-        album_name: albumData.collectionName,
-        artwork_url: albumData.artworkUrl100,
-        release_date: albumData.releaseDate,
-        content_advisory_rating: albumData.collectionExplicitness || "N/A",
-        primary_genre_name: albumData.primaryGenreName
-      };
-      addToFavorites(favorite, this.props.currentUser.id)
-        .then(() => getFavorites(this.props.currentUser))
-        .then(res => this.props.getTheFavorites(res.favorites))
-        .catch(err => this.setState({ error: err }));
-  }
+  handleAdd = albumData => {
+    console.log("handleADD album data", albumData);
+    const favorite = {
+      album_id: albumData.collectionId,
+      artist_name: albumData.artistName,
+      album_name: albumData.collectionName,
+      artwork_url: albumData.artworkUrl100,
+      release_date: albumData.releaseDate,
+      content_advisory_rating: albumData.collectionExplicitness || "N/A",
+      primary_genre_name: albumData.primaryGenreName
+    };
+    addToFavorites(favorite, this.props.currentUser.id)
+      .then(() => getFavorites(this.props.currentUser))
+      .then(res => this.props.getTheFavorites(res.favorites))
+      .catch(err => this.setState({ error: err }));
+  };
 
-  handleDelete = (albumData) => {
-    deleteFavorite((albumData.collectionId || albumData.album_id), this.props.currentUser.id)
-    .then(() => getFavorites(this.props.currentUser))
-    .then(res => this.props.getTheFavorites(res.favorites))
-    .catch(err => this.setState({ error: err }));
-  }
+  handleDelete = albumData => {
+    deleteFavorite(
+      albumData.collectionId || albumData.album_id,
+      this.props.currentUser.id
+    )
+      .then(() => getFavorites(this.props.currentUser))
+      .then(res => this.props.getTheFavorites(res.favorites))
+      .catch(err => this.setState({ error: err }));
+  };
 
   render() {
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
+        {this.state.error && <p className='error'>{this.state.error}</p>}
         <Nav
           currentUser={this.props.currentUser}
           handleLogout={this.logoutTheUser}
@@ -135,7 +144,7 @@ export class App extends Component {
           render={() => (
             <section>
               <div>
-                <SearchForm handleFavorite={this.handleFavorite}/>
+                <SearchForm handleFavorite={this.handleFavorite} />
               </div>
               <div className="welcome-container">
                 <h2 className="welcome-h2">Doo-Wop</h2>
@@ -149,21 +158,18 @@ export class App extends Component {
                   albums={this.state.pop}
                   handleFavorite={this.handleFavorite}
                   favorites={this.props.favorites}
-
                 />
                 <h2 className="welcome-h2">Gangsta Rap</h2>
                 <WelcomeContainer
                   albums={this.state.rock}
                   handleFavorite={this.handleFavorite}
                   favorites={this.props.favorites}
-
                 />
                 <h2 className="welcome-h2">Britpop</h2>
                 <WelcomeContainer
                   albums={this.state.britpop}
                   handleFavorite={this.handleFavorite}
                   favorites={this.state.favorites}
-
                 />
               </div>
             </section>
@@ -198,17 +204,17 @@ export class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  error: state.error,
+const mapStateToProps = state => ({
   currentUser: state.currentUser,
-  favorites: state.favorites,
-})
+  favorites: state.favorites
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  getTheFavorites: (user) => dispatch(getTheFavorites(user)),
-  createTheUser: (user) => dispatch(createTheUser(user)),
-  loginTheUser: (user) => dispatch(loginTheUser(user)),
+const mapDispatchToProps = dispatch => ({
+  getTheFavorites: user => dispatch(getTheFavorites(user)),
+  createTheUser: user => dispatch(createTheUser(user)),
+  loginTheUser: user => dispatch(loginTheUser(user)),
   logoutUser: () => dispatch(logoutUser()),
+
   handleAdd: (albumData) => dispatch(handleAdd(albumData)),
   handleDelete: (albumData) => dispatch(handleDelete(albumData))
 })
@@ -224,3 +230,4 @@ App.propTypes = {
   loginTheUser: PropTypes.func,
   logoutUser: PropTypes.func
 }
+

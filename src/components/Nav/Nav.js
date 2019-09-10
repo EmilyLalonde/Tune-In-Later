@@ -1,12 +1,14 @@
 import './Nav.css'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 const Nav = (props) => {
     return (
         <nav>
             <h1></h1>
+            {props.currentUser &&<h2 className="user-name"> Welcome, {props.currentUser.name}  </h2>}
             <NavLink to='/' className='Nav'>Home</NavLink>
             <NavLink to='/favorites' className='Nav'>Favorites</NavLink>
             <NavLink to='/login' className='Nav'>Log In</NavLink>
@@ -16,9 +18,17 @@ const Nav = (props) => {
     )
 }
 
-export default Nav
+
+const mapStateToProps = (state) => ({
+    currentUser: state.currentUser,
+})
+
+export default connect(mapStateToProps)(Nav)
+
+
 
 Nav.propTypes = {
     currentUser: PropTypes.object,
     handleLogout: PropTypes.func,
   }
+
