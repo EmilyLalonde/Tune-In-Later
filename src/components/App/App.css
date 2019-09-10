@@ -1,18 +1,52 @@
 body {
-    background-image: url('https://wallpapersite.com/images/wallpapers/triangles-2160x1920-colorful-hd-5505.jpg');
+    background-image: url('https://free4kwallpapers.com/uploads/originals/2018/01/28/abstract-background-wallpaper.jpg');
     background-repeat: no-repeat;
-    background-size: 100vw 120vh;
+    background-size: 100vw 150vh;
+    font-family: Oswald, sans-serif;
 }
 
 .welcome-h2 {
-  color: #b6335b;
+  color: #002236;
   font-size: 40px;
   text-align: center;
-  margin-top: 2%;
   margin-bottom: 2%;
+  text-shadow: 1px 1px;
+  text-shadow:
+  0 0 10px #fff,
+  0 0 15px #fff,
+  0 0 30px #fff,
+  0 0 50px #38bcf4,
+  0 0 100px #38bcf4,
+  0 0 130px #38bcf4,
+  0 0 150px #38bcf4,
+  0 0 170px #38bcf4;
 }
 
 .welcome-container {
   height: 90vh;
   overflow: scroll;
+}
+
+.sign-out-button {
+  background-color: #36abdd;
+  border: 3px solid #002236;
+  border-radius: 6px;
+  color: #002236;
+  font-size: 20px;
+  height: 50px;
+  width: 100px;
+}
+
+.login-button:hover, 
+.search-button:hover,
+.create-user-button:hover,
+.sign-out-button:hover {
+  box-shadow:
+   0 0 0.1vw  0.1vw #fff7f7,   
+   0 0 0.3vw  0.3vw #002236, 
+   0 0   1.5vw  0.2vw #36abdd,
+   inset 0 0 1vw  0.2vw #36abdd,
+   inset 0 0 0.3vw  0.1vw #002236,
+   inset 0 0 0.1vw  0.1vw #fff7f7;
+   background-color: rgba(0, 0, 0, .3)
 }

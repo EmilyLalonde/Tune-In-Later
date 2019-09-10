@@ -1,0 +1,26 @@
+.search-bar {
+  border: 3px solid #002236;
+  border-radius: 6px;
+  display: flex;
+  margin-left: 30%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  height: 40px;
+  width: 40%;
+}
+
+.search {
+  border: none;
+  font-size: 20px;
+  height: 38px;
+  width: 80%
+}
+
+.search-button {
+  border: none;
+  background-color: #36abdd;
+  color: #002236;
+  font-size: 26px;
+  height: 40px;
+  width: 20%;
+}

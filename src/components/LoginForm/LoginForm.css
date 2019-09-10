@@ -1,16 +1,25 @@
 .formInput {
+  border: 3px solid #002236;
+  border-radius: 6px;
   display: block;
+  font-size: 20px;
   height: 50px;
   margin-bottom: 20px;
 }
 
 .login-form {
   display: grid;
-  margin-left: 25%;
-  width: 50%;
+  margin-left: 30%;
+  margin-top: 5%;
+  width: 40%;
 }
 
 .login-button {
-  height: 40px;
+  background-color: #36abdd;
+  border: 3px solid #002236;
+  border-radius: 6px;
+  color: #002236;
+  font-size: 30px;
+  height: 50px;
 }
 

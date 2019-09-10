@@ -1,6 +1,6 @@
 .Album {
     border-radius: 8px;
-    border: 2px solid #3c305e;
+    border: 4px solid #ed1228;
     height: 200px;
     margin: 6%;
     margin-top: 12%;
@@ -8,6 +8,18 @@
     cursor: pointer;
     perspective: 600;
     position: relative;
+}
+
+.card-border:hover,
+.Album:hover {
+   box-shadow:
+   0 0 0.1vw  0.1vw #fff7f7,   
+   0 0 0.3vw  0.3vw #a20818, 
+   0 0   1.5vw  0.2vw #ed1228,
+   inset 0 0 1vw  0.2vw #ed1228,
+   inset 0 0 0.3vw  0.1vw #a20818,
+   inset 0 0 0.1vw  0.1vw #fff7f7;
+   background-color: rgba(0, 0, 0, .3)
 }
 
 .card {
@@ -33,7 +45,7 @@
 
 .card .card-back {
     backface-visibility: hidden;
-    background-color: rgba(0,0,0,0);
+    background-color: #002236;
     color: white;
     height: 100%;
     text-align: center;
@@ -43,7 +55,11 @@
 .album-name,
 p {
     margin: 0;
-    font-size: 30px;
+}
+
+h3 {
+    margin: 0;
+    font-size: 16px;
 }
 
 .favorite {
@@ -74,8 +90,14 @@ p {
 
 .card-border {
     /* background-color: #15b0f6; */
-    border: 2px solid #3c305e;
+    border: 4px solid #ed1228;
     border-radius: 8px;
     height: 250px;
+    margin-bottom: 30px;
     width: 250px;
+}
+
+.label {
+    color: #36abdd;
+    font-size: 20px;
 }
