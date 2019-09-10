@@ -24,6 +24,7 @@ import CreateUserForm from "../CreateUserForm/CreateUserForm";
 import Nav from "../Nav/Nav";
 import "./App.css";
 import SearchForm from "../SearchForm/SearchForm.js";
+import PropTypes from 'prop-types'
 
 export class App extends Component {
   constructor(props) {
@@ -127,7 +128,6 @@ export class App extends Component {
         <Nav
           currentUser={this.props.currentUser}
           handleLogout={this.logoutTheUser}
-          setSearched={this.setSearched}
         />
         <Route
           exact
@@ -214,3 +214,13 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  createTheUser: PropTypes.func,
+  favorites: PropTypes.array,
+  getTheFavorites: PropTypes.func,
+  handleAdd: PropTypes.func,
+  handleDelete: PropTypes.func,
+  loginTheUser: PropTypes.func,
+  logoutUser: PropTypes.func
+}
