@@ -2,7 +2,8 @@ import "./FavoritesContainer.css";
 import React from "react";
 import Album from "../Album/Album";
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import FilterForm from '../FilterForm/FilterForm';
 
 const FavoritesContainer = ({ favorites, handleFavorite }) => {
   const idsOfAllFavs = [];
@@ -16,14 +17,20 @@ const FavoritesContainer = ({ favorites, handleFavorite }) => {
   }else {
     return false
   }
-}
-  const favoriteAlbumCards = favorites.map(album => {
-    return <Album isFav={isThisAFav(album)} key={album.collectionId + 'fave'} albumData={album} handleFavorite={handleFavorite}/>;
-  });
+  }
+
+  let favoriteAlbumCards = [];
+  const filterByGenre = (genre) => {
+    const filteredFavorites = favorites.filter(favorite => favorite.primary_genre_name === genre)
+    favoriteAlbumCards = filteredFavorites.map(album => {
+      return <Album isFav={isThisAFav(album)} key={album.collectionId + 'fave'} albumData={album} handleFavorite={handleFavorite}/>;
+    });
+  }
 
   return (
     <section className="FavoritesContainer">
-        {favoriteAlbumCards}
+      <FilterForm filterByGenre={filterByGenre}/>
+      {favoriteAlbumCards}
     </section>
     );
 };
