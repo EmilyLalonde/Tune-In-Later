@@ -31,7 +31,7 @@ describe('favoriteReducer', () => {
   it('should return the right version of state from reducer - get favorites', () => {
     const mockAction = {
       type: 'GET_FAVORITES',
-      albumData: mockState
+      favorites: mockState
     }
     const result = favoriteReducer(mockState, mockAction);
     const expected = mockState;

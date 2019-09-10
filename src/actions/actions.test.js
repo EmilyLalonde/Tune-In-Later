@@ -42,7 +42,7 @@ describe('actions', () => {
     const result = getTheFavorites(mockAlbumData);
     const expected = {
       type: 'GET_FAVORITES',
-      albumData: mockAlbumData
+      favorites: mockAlbumData
     }
     expect(result).toEqual(expected);
   });
