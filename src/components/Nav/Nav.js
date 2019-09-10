@@ -4,7 +4,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
-    console.log(props)
     return (
         <nav>
             <h1>TuneIn!(Later)</h1>
