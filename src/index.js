@@ -13,9 +13,9 @@ const store = createStore(rootReducer, composeWithDevTools());
 
 const router = (
   <Provider store={store}>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>
 )
 
