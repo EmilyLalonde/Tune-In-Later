@@ -4,6 +4,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
+    console.log(props)
     return (
         <nav>
             <h1>TuneIn!(Later)</h1>
@@ -12,7 +13,6 @@ const Nav = (props) => {
             <NavLink to='/login' className='Nav'>Log In</NavLink>
             <NavLink to='/create-user' className='Nav'>Create Account</NavLink>
             {props.currentUser && <button onClick={props.handleLogout}>Sign Out</button>}
-            <SearchForm />
         </nav>
     )
 }

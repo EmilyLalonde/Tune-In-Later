@@ -3,10 +3,10 @@ import React from "react";
 import Album from "../Album/Album";
 import { connect } from 'react-redux';
 
-export const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
-  const favs = favorites.favorites
-
+const WelcomeContainer = ({ albums, handleFavorite, favorites }) => {
+  const favs = favorites
   const idsOfAllFavs = []
+  
   if(favs){  
     favs.forEach(fav => idsOfAllFavs.push(fav.album_id))
   }

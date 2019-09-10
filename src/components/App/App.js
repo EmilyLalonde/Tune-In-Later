@@ -23,6 +23,7 @@ import LoginForm from "../LoginForm/LoginForm";
 import CreateUserForm from "../CreateUserForm/CreateUserForm";
 import Nav from "../Nav/Nav";
 import "./App.css";
+import SearchForm from "../SearchForm/SearchForm.js";
 
 export class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ export class App extends Component {
       rock: [],
       pop: [],
       britpop: [],
+      searched: [],
       error: "",
       currentUser: null
     };
@@ -121,6 +123,10 @@ export class App extends Component {
     .catch(err => this.setState({ error: err }));
   }
 
+  setSearched = () => {
+    console.log('maybe')
+  }
+
   render() {
     return (
       <div>
@@ -128,40 +134,46 @@ export class App extends Component {
         <Nav
           currentUser={this.props.currentUser}
           handleLogout={this.logoutUser}
+          setSearched={this.setSearched}
         />
         <Route
           exact
           path="/"
           render={() => (
-            <div className="welcome-container">
-              <h2 className="welcome-h2">Doo-Wop</h2>
-              <WelcomeContainer
-                albums={this.state.country}
-                handleFavorite={this.handleFavorite}
-                favorites={this.props.favorites}
-              />
-              <h2 className="welcome-h2">Hair Metal</h2>
-              <WelcomeContainer
-                albums={this.state.pop}
-                handleFavorite={this.handleFavorite}
-                favorites={this.props.favorites}
+            <section>
+              <div>
+                <SearchForm handleFavorite={this.handleFavorite}/>
+              </div>
+              <div className="welcome-container">
+                <h2 className="welcome-h2">Doo-Wop</h2>
+                <WelcomeContainer
+                  albums={this.state.country}
+                  handleFavorite={this.handleFavorite}
+                  favorites={this.props.favorites}
+                />
+                <h2 className="welcome-h2">Hair Metal</h2>
+                <WelcomeContainer
+                  albums={this.state.pop}
+                  handleFavorite={this.handleFavorite}
+                  favorites={this.props.favorites}
 
-              />
-              <h2 className="welcome-h2">Gangsta Rap</h2>
-              <WelcomeContainer
-                albums={this.state.rock}
-                handleFavorite={this.handleFavorite}
-                favorites={this.props.favorites}
+                />
+                <h2 className="welcome-h2">Gangsta Rap</h2>
+                <WelcomeContainer
+                  albums={this.state.rock}
+                  handleFavorite={this.handleFavorite}
+                  favorites={this.props.favorites}
 
-              />
-              <h2 className="welcome-h2">Britpop</h2>
-              <WelcomeContainer
-                albums={this.state.britpop}
-                handleFavorite={this.handleFavorite}
-                favorites={this.state.favorites}
+                />
+                <h2 className="welcome-h2">Britpop</h2>
+                <WelcomeContainer
+                  albums={this.state.britpop}
+                  handleFavorite={this.handleFavorite}
+                  favorites={this.state.favorites}
 
-              />
-            </div>
+                />
+              </div>
+            </section>
           )}
         />
         {this.props.currentUser ? (

@@ -9,7 +9,7 @@ export const getAlbums = async (id) => {
 }
 
 export const getArtistAlbums = async (artist) => {
-  const url = `https://itunes.apple.com/search?term=music&term=${artist}&limit=12`
+  const url = `https://itunes.apple.com/search?term=music&term=${artist}&limit=5`
   const response = await fetch(url);
   if(!response.ok) {
     throw new Error('There was an error getting your albums')
