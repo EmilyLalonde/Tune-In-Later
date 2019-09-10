@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import {getArtistAlbums} from '../../apiCalls/apiCalls';
 import './SearchForm.css';
-import FavoritesContainer from '../FavoritesContainer/FavoritesContainer'
+import WelcomeContainer from '../WelcomeContainer/WelcomeContainer'
 
 class SearchForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
         artist: '',
         albums: [],
@@ -19,6 +19,7 @@ class SearchForm extends Component {
   }
 
   async handleSubmit () {
+    this.setState({albums: []})
     try {
         const albums = await getArtistAlbums(this.state.artist);
         this.setState({ albums });
@@ -28,13 +29,14 @@ class SearchForm extends Component {
   }
 
   render() {
-    console.log(this.state.artist)
     return (
-      <div className="search-bar">
-        <input type="text" placeholder="Search for an Artist" name="artist" className='search' value={this.state.artist} onChange={this.handleChange}/>
-        <button onClick={this.handleSubmit}>Submit</button>
-        {!!this.state.albums.length && <FavoritesContainer albums={this.state.albums}/>}
-      </div>
+      <section>
+        <div className="search-bar">
+          <input type="text" placeholder="Search for an Artist" name="artist" className='search' value={this.state.artist} onChange={this.handleChange}/>
+          <button onClick={this.handleSubmit}>Submit</button>
+        </div>
+        {!!this.state.albums.length && <WelcomeContainer albums={this.state.albums} handleFavorite={this.props.handleFavorite}/>}
+      </section>
     );
   }
 }
