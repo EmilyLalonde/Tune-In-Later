@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./CreateUserForm.css";
+import PropTypes from 'prop-types'
 
 class CreateUserForm extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class CreateUserForm extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <form className="create-user-form">
         {this.props.error && <p className="error">{this.props.error}</p>}
@@ -62,3 +64,7 @@ class CreateUserForm extends Component {
 }
 
 export default CreateUserForm;
+
+CreateUserForm.propTypes = {
+  createTheUser: PropTypes.func
+}

@@ -2,6 +2,7 @@ import "./FavoritesContainer.css";
 import React from "react";
 import Album from "../Album/Album";
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 const FavoritesContainer = ({ favorites, handleFavorite }) => {
   const idsOfAllFavs = [];
@@ -32,3 +33,8 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(FavoritesContainer);
+
+FavoritesContainer.propTypes = {
+  favorites: PropTypes.array,
+  handleFavorite: PropTypes.func,
+}

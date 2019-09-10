@@ -1,11 +1,10 @@
 import './Nav.css'
-import SearchForm from '../SearchForm/SearchForm';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 const Nav = (props) => {
-    console.log('props', props)
     return (
         <nav>
             <h1></h1>
@@ -19,8 +18,17 @@ const Nav = (props) => {
     )
 }
 
+
 const mapStateToProps = (state) => ({
     currentUser: state.currentUser,
 })
 
 export default connect(mapStateToProps)(Nav)
+
+
+
+Nav.propTypes = {
+    currentUser: PropTypes.object,
+    handleLogout: PropTypes.func,
+  }
+

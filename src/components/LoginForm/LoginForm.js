@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom'
 import './LoginForm.css';
+import PropTypes from 'prop-types'
 
 class LoginForm extends Component {
   constructor(props) {
@@ -29,6 +29,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <form className="login-form">
         {this.props.error && <p className="error">{this.props.error}</p>}
@@ -58,3 +59,7 @@ class LoginForm extends Component {
 }
 
 export default LoginForm;
+
+LoginForm.propTypes = {
+  loginTheUser: PropTypes.func
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {getArtistAlbums} from '../../apiCalls/apiCalls';
 import './SearchForm.css';
 import WelcomeContainer from '../WelcomeContainer/WelcomeContainer'
+import PropTypes from 'prop-types'
 
 class SearchForm extends Component {
   constructor(props) {
@@ -44,3 +45,7 @@ class SearchForm extends Component {
 }
 
 export default SearchForm;
+
+SearchForm.propTypes = {
+  handleFavorite: PropTypes.func
+}
